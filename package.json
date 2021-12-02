@@ -4,6 +4,9 @@
   "main": "public/index.js",
   "scripts": {
     "build": "node --require esbuild-register build.ts",
+    "compile": "tsc",
+    "test": "npm run compile && jest",
+    "test:watch": "npm rum test -- --watch",
     "dev": "concurrently --prefix \"{time}\" -t \"HH:mm:ss\" -c \"bgCyan.bold,bgGreen.bold,bgGrey.bold\" -n \"esbuild,BrowserSync,Express\" \"npm run build:watch\" \"npm run browser:reload\" \"npm run serve:local\"",
     "build:watch": "WATCH=true npm run build",
     "browser:reload": "wait-on public/index.js && browser-sync start --notify=false --proxy 'http://localhost:3030' --files 'public/*' --port 3000",
